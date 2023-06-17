@@ -14,12 +14,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- CSS files -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link href="{{ asset('/dist/css/tabler.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/demo.min.css') }}" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    
 </head>
 
 <body>
@@ -39,6 +47,7 @@
     <!-- Tabler Core -->
     <script src="{{ asset('/dist/js/tabler.min.js') }}"></script>
     <script src="{{ asset('/dist/js/demo.min.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
 
 @section('subtitle')
-    <x-subtitle />
+    @include('permission.user.subtitle')
 @endsection
 
 @section('content')
