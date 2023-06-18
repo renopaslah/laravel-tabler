@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Permission;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRolePostRequest;
 use App\Repositories\UserRoleRepository;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,9 @@ class UserRoleController extends Controller
      */
     public function create()
     {
-        $roles = $this->userRole->getRole();
-        $user = $this->userRole->get(request('user'));
+        $roles = $this->userRole->getRole(request('user'));
+        $user = $this->userRole->getUser(request('user'));
+
         return view('permission.user_role.create', compact('roles', 'user'));
     }
 
@@ -43,9 +45,10 @@ class UserRoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRolePostRequest $request)
     {
-        //
+        $role = $this->userRole->save($request);
+        return redirect(route('user.index'));
     }
 
     /**

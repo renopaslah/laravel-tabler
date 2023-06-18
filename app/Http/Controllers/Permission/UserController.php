@@ -26,6 +26,7 @@ class UserController extends Controller
     {
         $successMessage = session('success');
         $user = $this->dataUser->get();
+
         return view('permission.user.index', compact('user'));
     }
 

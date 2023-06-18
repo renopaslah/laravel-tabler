@@ -7,7 +7,7 @@ use App\Models\User;
 class UserRepository
 {
     public function get(){
-        return User::get();
+        return User::with('roles')->get();
     }
 
     // public function getById($id){
