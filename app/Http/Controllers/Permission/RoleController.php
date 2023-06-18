@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Permission;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RolePostRequest;
+use App\Http\Requests\RoleUpdateRequest;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -44,7 +46,7 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolePostRequest $request)
     {
         $role = $this->role->save($request);
         return redirect(route('role.index'));
@@ -80,7 +82,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleUpdateRequest $request, $id)
     {
         $role = $this->role->update($request, $id);
         return redirect(route('role.index'));
