@@ -18,12 +18,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSS files -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link href="{{ asset('/dist/css/tabler.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/dist/css/demo.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

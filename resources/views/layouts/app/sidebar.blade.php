@@ -89,7 +89,7 @@
                     <span class="avatar avatar-sm"
                         style="background-image: url({{ asset('/static/avatars/000m.jpg') }})"></span>
                     <div class="d-none d-xl-block ps-2">
-                        <div>Paweł Kuna</div>
+                        <div>{{ Auth::user()->name }}</div>
                         <div class="mt-1 small text-muted">UI Designer</div>
                     </div>
                 </a>
@@ -195,10 +195,10 @@
                         </span>
                     </a>
                     <div class="dropdown-menu show">
-                        <a class="dropdown-item active" href="#">
+                        <a class="dropdown-item {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}" href="{{ route('user.index') }}">
                             Pengguna
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item {{ Route::currentRouteName() === 'role.index' ? 'active' : '' }}" href="{{ route('role.index') }}">
                             Peran
                         </a>
                         <a class="dropdown-item" href="#">
