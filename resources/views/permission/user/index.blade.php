@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <div class="table-responsive">
+            <div class="table-responsive d-none">
                 <div class="card-body">
                     <table id="myTable" class="display">
                         <thead>
@@ -21,14 +21,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
+                            @foreach ($user as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary mb-1">Ubah</a>
+                                        <a href="#" class="btn btn-sm btn-info mb-1">Reset Password</a>
+                                        <a href="{{ route('user.role.create', ['user' => $item->id]) }}" class="btn btn-sm btn-success mb-1">Peran</a>
+                                        <a href="#" class="btn btn-sm btn-warning mb-1">Tangguhkan</a>
+                                        <button type="button" class="btn btn-sm btn-danger delete-btn mb-1"
+                                            data-id="{{ $item->id }}">Hapus</button>
+                                    </td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ Str::mask($item->email, '*', -16, 6) }}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -41,6 +50,7 @@
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
+            $('.table-responsive').removeClass('d-none');
         });
     </script>
 @endpush

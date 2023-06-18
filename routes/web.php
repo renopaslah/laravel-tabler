@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Permission\RoleController;
 use App\Http\Controllers\Permission\UserController;
+use App\Http\Controllers\Permission\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/page', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('permission/user', UserController::class);
+    Route::resource('permission/user.role', UserRoleController::class);
     Route::resource('permission/role', RoleController::class);
 });
 

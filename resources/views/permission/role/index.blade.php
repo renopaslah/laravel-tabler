@@ -48,8 +48,8 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.table-responsive').removeClass('d-none');
             $('#myTable').DataTable();
+            $('.table-responsive').removeClass('d-none');
 
             // delete
             $('.delete-btn').click(function() {

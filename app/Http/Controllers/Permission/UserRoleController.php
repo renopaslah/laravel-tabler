@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Permission;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Repositories\UserRoleRepository;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+class UserRoleController extends Controller
 {
-    public $dataUser;
+    public $userRole;
 
     public function __construct()
     {
-        $this->dataUser = new UserRepository();
+        $this->userRole = new UserRoleRepository();
     }
 
     /**
@@ -24,9 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $successMessage = session('success');
-        $user = $this->dataUser->get();
-        return view('permission.user.index', compact('user'));
+        //
     }
 
     /**
@@ -36,7 +32,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = $this->userRole->getRole();
+        $user = $this->userRole->get(request('user'));
+        return view('permission.user_role.create', compact('roles', 'user'));
     }
 
     /**
