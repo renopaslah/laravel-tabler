@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Permission;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -27,7 +27,7 @@ class UserController extends Controller
         $successMessage = session('success');
         $user = $this->dataUser->get();
 
-        return view('permission.user.index', compact('user'));
+        return view('admin.user.index', compact('user'));
     }
 
     /**

@@ -1,13 +1,13 @@
 @extends('layouts.app.app')
 
 @section('subtitle')
-    @include('permission.role.subtitle_create')
+    @include('admin.role.subtitle_create')
 @endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <form action="{{ route('role.store') }}" method="post">
+            <form action="{{ route('admin.role.store') }}" method="post">
                 @csrf
                 <div class="col-md-6">
                     <div class="card">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <a href="{{ route('role.index') }}" type="button" class="btn btn-warning">Batal</a>
+                            <a href="{{ route('admin.role.index') }}" type="button" class="btn btn-warning">Batal</a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>

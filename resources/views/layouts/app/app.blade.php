@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Dashboard - {{ config('constant.title') }} - {{ config('constant.description') }}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

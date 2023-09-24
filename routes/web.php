@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Permission\RoleController;
-use App\Http\Controllers\Permission\UserController;
-use App\Http\Controllers\Permission\UserRoleController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,11 +25,11 @@ Route::get('/page', function () {
 })->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('permission/user', UserController::class);
-    Route::resource('permission/user.role', UserRoleController::class);
-    Route::resource('permission/role', RoleController::class);
+    Route::resource('admin/user', UserController::class)->names('admin.user');
+    Route::resource('admin/user.role', UserRoleController::class)->names('admin.user.role');
+    Route::resource('admin/role', RoleController::class)->names('admin.role');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');

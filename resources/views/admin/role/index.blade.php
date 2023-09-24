@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
 
 @section('subtitle')
-    @include('permission.role.subtitle')
+    @include('admin.role.subtitle')
 @endsection
 
 @section('content')
@@ -28,7 +28,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('role.edit', ['role' => $item->id]) }}"
+                                            <a href="{{ route('admin.role.edit', ['role' => $item->id]) }}"
                                                 class="btn btn-sm btn-primary">Ubah</a>
                                             <button type="button" class="btn btn-sm btn-danger delete-btn"
                                                 data-id="{{ $item->id }}">Hapus</button>

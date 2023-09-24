@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Permission;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RolePostRequest;
-use App\Http\Requests\RoleUpdateRequest;
-use App\Repositories\RoleRepository;
+use App\Http\Requests\UserRolePostRequest;
+use App\Repositories\UserRoleRepository;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
-class RoleController extends Controller
+class UserRoleController extends Controller
 {
-    public $role;
+    public $userRole;
 
     public function __construct()
     {
-        $this->role = new RoleRepository();
+        $this->userRole = new UserRoleRepository();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +23,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $successMessage = session('success');
-        $role = $this->role->get();
-
-        return view('permission.role.index', compact('role', 'successMessage'));
+        //
     }
 
     /**
@@ -37,7 +33,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('permission.role.create');
+        $roles = $this->userRole->getRole(request('user'));
+        $user = $this->userRole->getUser(request('user'));
+
+        return view('admin.user_role.create', compact('roles', 'user'));
     }
 
     /**
@@ -46,10 +45,10 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RolePostRequest $request)
+    public function store(UserRolePostRequest $request)
     {
-        $role = $this->role->save($request);
-        return redirect(route('role.index'));
+        $role = $this->userRole->save($request);
+        return redirect(route('admin.user.index'));
     }
 
     /**
@@ -71,8 +70,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = $this->role->getById($id);
-        return view('permission.role.edit', compact('role'));
+        //
     }
 
     /**
@@ -82,10 +80,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $role = $this->role->update($request, $id);
-        return redirect(route('role.index'));
+        //
     }
 
     /**
@@ -96,6 +93,6 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = $this->role->delete($id);
+        //
     }
 }

@@ -111,7 +111,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
+                    <a class="nav-link" href="{{ route('admin.home') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
@@ -195,10 +195,10 @@
                         </span>
                     </a>
                     <div class="dropdown-menu show">
-                        <a class="dropdown-item {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}" href="{{ route('user.index') }}">
+                        <a class="dropdown-item {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                             Pengguna
                         </a>
-                        <a class="dropdown-item {{ Route::currentRouteName() === 'role.index' ? 'active' : '' }}" href="{{ route('role.index') }}">
+                        <a class="dropdown-item {{ Route::currentRouteName() === 'role.index' ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
                             Peran
                         </a>
                         <a class="dropdown-item" href="#">

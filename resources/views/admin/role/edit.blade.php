@@ -1,13 +1,13 @@
 @extends('layouts.app.app')
 
 @section('subtitle')
-    @include('permission.role.subtitle_create')
+    @include('admin.role.subtitle_create')
 @endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <form action="{{ route('role.update', ['role' => $role['id']]) }}" method="POST">
+            <form action="{{ route('admin.role.update', ['role' => $role['id']]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="col-md-6">
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <a href="{{ route('role.index') }}" type="button" class="btn btn-warning">Batal</a>
+                            <a href="{{ route('admin.role.index') }}" type="button" class="btn btn-warning">Batal</a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
 
 @section('subtitle')
-    @include('permission.user.subtitle')
+    @include('admin.user.subtitle')
 @endsection
 
 @section('content')
@@ -32,7 +32,7 @@
                                     <td>
                                         <a href="#" class="btn btn-sm btn-primary mb-1">Ubah</a>
                                         <a href="#" class="btn btn-sm btn-info mb-1">Reset Password</a>
-                                        <a href="{{ route('user.role.create', ['user' => $item->id]) }}"
+                                        <a href="{{ route('admin.user.role.create', ['user' => $item->id]) }}"
                                             class="btn btn-sm btn-success mb-1">Peran</a>
                                         <a href="#" class="btn btn-sm btn-warning mb-1">Tangguhkan</a>
                                         <button type="button" class="btn btn-sm btn-danger delete-btn mb-1"

@@ -56,7 +56,7 @@
                     <span class="avatar avatar-sm" style="background-image: url({{ asset('/static/avatars/000m.jpg') }})"></span>
                     <div class="d-none d-xl-block ps-2">
                         <div>{{ Auth::user()->name }}</div>
-                        <div class="mt-1 small text-muted">UI Designer</div>
+                        <div class="mt-1 small text-muted">{{ auth()->user()->roles->first() ? auth()->user()->roles->first()->name : 'No Role' }}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
