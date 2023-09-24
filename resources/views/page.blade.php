@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <div class="table-responsive">
+            <div class="table-responsive d-none">
                 <div class="card-body">
                     <table id="myTable" class="display">
                         <thead>
@@ -41,6 +41,7 @@
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
+            $('.table-responsive').removeClass('d-none');
         });
     </script>
 @endpush

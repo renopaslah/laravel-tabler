@@ -195,10 +195,10 @@
                         </span>
                     </a>
                     <div class="dropdown-menu show">
-                        <a class="dropdown-item {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
+                        <a class="dropdown-item {{ (Route::currentRouteName() === 'admin.user.index' || Route::currentRouteName() === 'admin.user.role.create') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                             Pengguna
                         </a>
-                        <a class="dropdown-item {{ Route::currentRouteName() === 'role.index' ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
+                        <a class="dropdown-item {{ (Route::currentRouteName() === 'admin.role.index' || Route::currentRouteName() === 'admin.role.edit') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
                             Peran
                         </a>
                         <a class="dropdown-item" href="#">
