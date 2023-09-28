@@ -1,13 +1,11 @@
 /*!
-* Tabler v1.0.0-beta19 (https://tabler.io)
-* @version 1.0.0-beta19
+* Tabler v1.0.0-beta16 (https://tabler.io)
+* @version 1.0.0-beta16
 * @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
 * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
 */
-/* prettier-ignore */
-/* prettier-ignore */
 /* Functional styling;
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
@@ -392,7 +390,7 @@
   margin: 1px 1px 0 0;
 }
 .noUi-handle.noUi-active, .noUi-handle:focus {
-  box-shadow: 0 0 0 1px #f6f8fb, 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+  box-shadow: 0 0 0 1px #f1f5f9, 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
 }
 
 .noUi-connect {
@@ -534,7 +532,7 @@
   position: absolute;
   right: 0.75rem;
   top: 50%;
-  color: #182433;
+  color: #1d273b;
   opacity: 0.4;
   margin-top: -12px;
   line-height: 20px;
@@ -547,7 +545,7 @@
 .plugin-dropdown_input.focus.dropdown-active .ts-control {
   box-shadow: none;
   border: 1px solid var(--tblr-border-color);
-  box-shadow: 0 0 transparent;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
 }
 .plugin-dropdown_input .dropdown-input {
   border: 1px solid #d0d0d0;
@@ -561,7 +559,7 @@
 .plugin-dropdown_input.focus .ts-dropdown .dropdown-input {
   border-color: #90b5e2;
   outline: 0;
-  box-shadow: 0 0 transparent, 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
 }
 .plugin-dropdown_input .items-placeholder {
   border: 0 none !important;
@@ -580,6 +578,9 @@
   min-width: 4px;
 }
 .ts-wrapper.plugin-input_autogrow.has-items.focus .ts-control > input::-webkit-input-placeholder {
+  color: transparent;
+}
+.ts-wrapper.plugin-input_autogrow.has-items.focus .ts-control > input::-moz-placeholder {
   color: transparent;
 }
 .ts-wrapper.plugin-input_autogrow.has-items.focus .ts-control > input:-ms-input-placeholder {
@@ -640,7 +641,7 @@
 }
 
 .ts-wrapper.plugin-remove_button:not(.rtl) .item .remove {
-  border-left: 1px solid #dadfe5;
+  border-left: 1px solid #e6e7e9;
   margin-left: 5px;
 }
 .ts-wrapper.plugin-remove_button:not(.rtl) .item.active .remove {
@@ -651,7 +652,7 @@
 }
 
 .ts-wrapper.plugin-remove_button.rtl .item .remove {
-  border-right: 1px solid #dadfe5;
+  border-right: 1px solid #e6e7e9;
   margin-right: 5px;
 }
 .ts-wrapper.plugin-remove_button.rtl .item.active .remove {
@@ -668,7 +669,7 @@
 .ts-dropdown,
 .ts-control,
 .ts-control input {
-  color: #182433;
+  color: #1d273b;
   font-family: inherit;
   font-size: inherit;
   line-height: 1.4285714286;
@@ -715,8 +716,8 @@
   margin: 0 3px 3px 0;
   padding: 1px 5px;
   background: #efefef;
-  color: #182433;
-  border: 0px solid #dadfe5;
+  color: #1d273b;
+  border: 0px solid #e6e7e9;
 }
 .ts-wrapper.multi .ts-control > div.active {
   background: #206bc4;
@@ -724,7 +725,7 @@
   border: 0px solid rgba(0, 0, 0, 0);
 }
 .ts-wrapper.multi.disabled .ts-control > div, .ts-wrapper.multi.disabled .ts-control > div.active {
-  color: #727272;
+  color: #797979;
   background: white;
   border: 0px solid white;
 }
@@ -768,7 +769,7 @@
 }
 .disabled .ts-control {
   opacity: 0.5;
-  background-color: var(--tblr-bg-surface-secondary);
+  background-color: var(--tblr-gray-100);
 }
 .input-hidden .ts-control > input {
   opacity: 0;
@@ -783,7 +784,7 @@
   width: 100%;
   z-index: 10;
   border: 1px solid #d0d0d0;
-  background: #fff;
+  background: #ffffff;
   margin: 0.25rem 0 0 0;
   border-top: 0 none;
   box-sizing: border-box;
@@ -816,8 +817,8 @@
   border-top: 0 none;
 }
 .ts-dropdown .optgroup-header {
-  color: #667382;
-  background: var(--tblr-bg-surface);
+  color: #49566c;
+  background: #ffffff;
   cursor: default;
 }
 .ts-dropdown .active {
@@ -828,7 +829,7 @@
   color: inherit;
 }
 .ts-dropdown .create {
-  color: rgba(24, 36, 51, 0.5);
+  color: rgba(29, 39, 59, 0.5);
 }
 .ts-dropdown .spinner {
   display: inline-block;
@@ -890,7 +891,7 @@
   height: auto;
   padding: 0;
   z-index: 1000;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid var(--tblr-border-color-translucent);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -907,7 +908,7 @@
   content: " ";
   display: block;
   height: 0;
-  margin: var(--tblr-spacer) 0;
+  margin: 0.5rem 0;
   overflow: hidden;
   border-top: 1px solid var(--tblr-border-color-translucent);
   margin-left: -0.75rem;
@@ -922,7 +923,6 @@
 }
 
 .ts-control {
-  box-shadow: 0 0 transparent;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: flex;
   align-items: center;
@@ -938,7 +938,7 @@
 .focus .ts-control {
   border-color: #90b5e2;
   outline: 0;
-  box-shadow: 0 0 transparent, 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
 }
 .ts-control .item {
   display: flex;
@@ -948,7 +948,7 @@
 .ts-wrapper.is-invalid,
 .was-validated .invalid,
 .was-validated :invalid + .ts-wrapper {
-  border-color: var(--tblr-form-invalid-color);
+  border-color: #d63939;
 }
 .ts-wrapper.is-invalid:not(.single),
 .was-validated .invalid:not(.single),
@@ -961,7 +961,7 @@
 .ts-wrapper.is-invalid.single,
 .was-validated .invalid.single,
 .was-validated :invalid + .ts-wrapper.single {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23929dab' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d63939' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cline x1='18' y1='6' x2='6' y2='18'%3e%3c/line%3e%3cline x1='6' y1='6' x2='18' y2='18'%3e%3c/line%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a5a9b1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d63939' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cline x1='18' y1='6' x2='6' y2='18'%3e%3c/line%3e%3cline x1='6' y1='6' x2='18' y2='18'%3e%3c/line%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.7142857143em + 0.4375rem) calc(0.7142857143em + 0.4375rem);
   background-repeat: no-repeat;
@@ -969,14 +969,14 @@
 .ts-wrapper.is-invalid.focus .ts-control,
 .was-validated .invalid.focus .ts-control,
 .was-validated :invalid + .ts-wrapper.focus .ts-control {
-  border-color: var(--tblr-form-invalid-color);
-  box-shadow: 0 0 0 0.25rem rgba(var(--tblr-form-invalid-color), 0.25);
+  border-color: #d63939;
+  box-shadow: 0 0 0 0.25rem rgba(214, 57, 57, 0.25);
 }
 
 .ts-wrapper.is-valid,
 .was-validated .valid,
 .was-validated :valid + .ts-wrapper {
-  border-color: var(--tblr-form-valid-color);
+  border-color: #2fb344;
 }
 .ts-wrapper.is-valid:not(.single),
 .was-validated .valid:not(.single),
@@ -989,7 +989,7 @@
 .ts-wrapper.is-valid.single,
 .was-validated .valid.single,
 .was-validated :valid + .ts-wrapper.single {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23929dab' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232fb344' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='20 6 9 17 4 12'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a5a9b1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232fb344' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='20 6 9 17 4 12'%3e%3c/polyline%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.7142857143em + 0.4375rem) calc(0.7142857143em + 0.4375rem);
   background-repeat: no-repeat;
@@ -997,8 +997,8 @@
 .ts-wrapper.is-valid.focus .ts-control,
 .was-validated .valid.focus .ts-control,
 .was-validated :valid + .ts-wrapper.focus .ts-control {
-  border-color: var(--tblr-form-valid-color);
-  box-shadow: 0 0 0 0.25rem rgba(var(--tblr-form-valid-color), 0.25);
+  border-color: #2fb344;
+  box-shadow: 0 0 0 0.25rem rgba(47, 179, 68, 0.25);
 }
 
 .ts-wrapper {
@@ -1009,7 +1009,7 @@
   min-height: calc(1.4285714286em + 0.25rem + calc(var(--tblr-border-width) * 2));
 }
 .input-group-sm > .ts-wrapper .ts-control, .ts-wrapper.form-select-sm .ts-control, .ts-wrapper.form-control-sm .ts-control {
-  border-radius: var(--tblr-border-radius-sm);
+  border-radius: 2px;
   font-size: 0.75rem;
 }
 .input-group-sm > .ts-wrapper.has-items .ts-control, .ts-wrapper.form-select-sm.has-items .ts-control, .ts-wrapper.form-control-sm.has-items .ts-control {
@@ -1030,7 +1030,7 @@
   min-height: calc(1.4285714286em + 1rem + calc(var(--tblr-border-width) * 2));
 }
 .input-group-lg > .ts-wrapper .ts-control, .ts-wrapper.form-control-lg .ts-control, .ts-wrapper.form-select-lg .ts-control {
-  border-radius: var(--tblr-border-radius-lg);
+  border-radius: 8px;
   font-size: 1.25rem;
 }
 
@@ -1042,7 +1042,7 @@
   background: none;
 }
 .ts-wrapper:not(.form-control):not(.form-select).single .ts-control {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23929dab' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a5a9b1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px 12px;
@@ -1074,11 +1074,6 @@
   border-bottom-right-radius: 0;
 }
 
-:root {
-  --ts-pr-clear-button: 0rem;
-  --ts-pr-caret: 0rem;
-}
-
 .ts-input {
   color: inherit;
 }
@@ -1089,46 +1084,6 @@
 .ts-control .dropdown-menu {
   width: 100%;
   height: auto;
-}
-
-.ts-wrapper.is-invalid .ts-control, .ts-wrapper.is-valid .ts-control {
-  --ts-pr-clear-button: 1.5rem;
-}
-
-.ts-dropdown {
-  background: var(--tblr-bg-surface);
-  color: var(--tblr-body-color);
-  box-shadow: var(--tblr-shadow-dropdown);
-}
-.ts-dropdown .option {
-  padding: 0.5rem 0.75rem;
-}
-
-.ts-control,
-.ts-control input {
-  color: var(--tblr-body-color);
-}
-
-.ts-control input::-webkit-input-placeholder {
-  color: #929dab;
-}
-
-.ts-control input:-ms-input-placeholder {
-  color: #929dab;
-}
-
-.ts-control input::-ms-input-placeholder {
-  color: #929dab;
-}
-
-.ts-control input::placeholder {
-  color: #929dab;
-}
-
-.ts-wrapper.multi .ts-control > div {
-  background: var(--tblr-bg-surface-secondary);
-  border: 1px solid var(--tblr-border-color);
-  color: var(--tblr-body-color);
 }
 
 .apexcharts-tooltip {
@@ -1158,22 +1113,6 @@
 .apexcharts-tooltip-marker {
   width: 10px !important;
   height: 10px !important;
-}
-
-.apexcharts-text {
-  fill: var(--tblr-body-color) !important;
-}
-
-.apexcharts-gridline {
-  stroke: var(--tblr-border-color) !important;
-}
-
-.apexcharts-legend-text {
-  color: inherit !important;
-}
-
-.apexcharts-radialbar-area {
-  stroke: var(--tblr-border-color-dark) !important;
 }
 
 svg {
@@ -1302,7 +1241,7 @@ image, text, .jvm-zoomin, .jvm-zoomout {
   }
 }
 .jvm-tooltip {
-  background: #182433;
+  background: #1d273b;
   font-family: inherit;
   font-size: 0.75rem;
   box-shadow: var(--tblr-shadow-card);
@@ -1346,12 +1285,12 @@ image, text, .jvm-zoomin, .jvm-zoomout {
 }
 
 .dropzone {
-  border: var(--tblr-border-width) dashed var(--tblr-border-color);
+  border: 1px dashed var(--tblr-border-color);
   color: var(--tblr-muted);
   padding: 1rem;
 }
 .dropzone.dz-drag-hover {
-  border: var(--tblr-border-width) dashed var(--tblr-primary);
+  border: 1px dashed var(--tblr-primary);
   background: rgba(var(--tblr-primary-rgb), 0.01);
   color: var(--tblr-primary);
 }
@@ -1370,7 +1309,7 @@ image, text, .jvm-zoomin, .jvm-zoomout {
 
 .fslightbox-container {
   font-family: inherit !important;
-  background: rgba(24, 36, 51, 0.24) !important;
+  background: rgba(29, 39, 59, 0.24) !important;
   -webkit-backdrop-filter: blur(4px) !important;
           backdrop-filter: blur(4px) !important;
 }
@@ -1397,10 +1336,6 @@ body {
   padding: 0 0.5rem 0;
 }
 
-.tox .tox-toolbar__primary {
-  background: transparent !important;
-}
-
 .tox:not(.tox-tinymce-inline) .tox-editor-header {
   border-bottom: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color) !important;
   box-shadow: none !important;
@@ -1415,24 +1350,13 @@ body {
   border-top: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color) !important;
 }
 
-.tox .tox-toolbar-overlord,
-.tox:not(.tox-tinymce-inline) .tox-editor-header {
+.tox .tox-toolbar,
+.tox .tox-toolbar__overflow,
+.tox .tox-toolbar__primary {
   background: transparent !important;
 }
 
-:root {
-  --gl-star-size: auto;
-  --gl-star-color: var(--tblr-yellow);
-  --gl-star-color-inactive: var(--tblr-border-color);
-}
-
-[data-star-rating] svg {
-  width: var(--tblr-icon-size, --gl-star-size);
-  height: var(--tblr-icon-size, --gl-star-size);
-}
-[data-star-rating] :not(.gl-active) > .gl-star-full {
-  color: var(--gl-star-color-inactive) !important;
-}
-[data-star-rating] .gl-active > .gl-star-full {
-  color: var(--gl-star-color);
+.tox .tox-toolbar-overlord,
+.tox:not(.tox-tinymce-inline) .tox-editor-header {
+  background: transparent !important;
 }

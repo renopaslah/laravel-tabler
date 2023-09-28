@@ -1,13 +1,11 @@
 /*!
-* Tabler v1.0.0-beta19 (https://tabler.io)
-* @version 1.0.0-beta19
+* Tabler v1.0.0-beta16 (https://tabler.io)
+* @version 1.0.0-beta16
 * @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
 * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
 */
-/* prettier-ignore */
-/* prettier-ignore */
 .payment {
   width: 3.33332rem;
   height: 2rem;
@@ -161,14 +159,6 @@
 
 .payment-provider-ebay-dark {
   background-image: url("../img/payments/ebay-dark.svg");
-}
-
-.payment-provider-epayco {
-  background-image: url("../img/payments/epayco.svg");
-}
-
-.payment-provider-epayco-dark {
-  background-image: url("../img/payments/epayco-dark.svg");
 }
 
 .payment-provider-eway {
@@ -515,8 +505,8 @@
 }
 
 .payment-lg {
-  width: 9.16663rem;
-  height: 5.5rem;
+  width: 8.3333rem;
+  height: 5rem;
 }
 
 .payment-xl {

@@ -1,13 +1,11 @@
 /*!
-* Tabler v1.0.0-beta19 (https://tabler.io)
-* @version 1.0.0-beta19
+* Tabler v1.0.0-beta16 (https://tabler.io)
+* @version 1.0.0-beta16
 * @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
 * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
 */
-/* prettier-ignore */
-/* prettier-ignore */
 .flag {
   position: relative;
   display: inline-block;
@@ -17,7 +15,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
+  border: var(--tblr-border-size) var(--tblr-border-style) var(--tblr-border-color);
   border-radius: var(--tblr-border-radius);
 }
 
@@ -1061,8 +1059,8 @@
 }
 
 .flag-lg {
-  width: 5.5rem;
-  height: 4.125rem;
+  width: 5rem;
+  height: 3.75rem;
 }
 
 .flag-xl {

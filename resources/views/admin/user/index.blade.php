@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="container-xl">
+    <div class="container-fluid">
         <div class="row row-deck row-cards">
             <div class="col">
                 <div class="card">
-                    <div class="table-responsive d-none">
-                        <div class="card-body">
+                    <div class="card-body">
+                        <div class="table-responsive d-none">
                             @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -44,7 +44,8 @@
                                             <td>{{ Str::mask($item->email, '*', -16, 6) }}</td>
                                             <td>
                                                 @foreach ($item->roles as $role)
-                                                    <span class="badge badge-outline text-blue mb-1">{{ $role->name }}</span>
+                                                    <span
+                                                        class="badge badge-outline text-blue mb-1">{{ $role->name }}</span>
                                                 @endforeach
                                             </td>
                                             <td>-</td>
@@ -67,6 +68,44 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
+                                    autocomplete="off">
+                                <label for="floating-input">Nama</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
+                                    autocomplete="off">
+                                <label for="floating-input">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
+                                    autocomplete="off">
+                                <label for="floating-input">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
+                                    autocomplete="off">
+                                <label for="floating-input">Password Confirmation</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="" class="mb-1">Role</label>
+                                <select class="form-select" name="" id="sRole">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary">Simpan</button>
@@ -77,10 +116,18 @@
 @endsection
 
 @push('scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
             $('.table-responsive').removeClass('d-none');
+
+            $('#sRole').select2({
+                dropdownParent: $("#modal-report"),
+                width:'100%',
+            });
         });
     </script>
 @endpush

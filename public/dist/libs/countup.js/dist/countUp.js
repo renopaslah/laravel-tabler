@@ -15,14 +15,13 @@ var CountUp = /** @class */ (function () {
         var _this = this;
         this.endVal = endVal;
         this.options = options;
-        this.version = '2.6.2';
+        this.version = '2.3.2';
         this.defaults = {
             startVal: 0,
             decimalPlaces: 0,
             duration: 2,
             useEasing: true,
             useGrouping: true,
-            useIndianSeparators: false,
             smartEasingThreshold: 999,
             smartEasingAmount: 333,
             separator: ',',
@@ -74,8 +73,8 @@ var CountUp = /** @class */ (function () {
                 _this.update(_this.finalEndVal);
             }
             else {
-                if (_this.options.onCompleteCallback) {
-                    _this.options.onCompleteCallback();
+                if (_this.callback) {
+                    _this.callback();
                 }
             }
         };
@@ -90,16 +89,10 @@ var CountUp = /** @class */ (function () {
             x2 = x.length > 1 ? _this.options.decimal + x[1] : '';
             if (_this.options.useGrouping) {
                 x3 = '';
-                var factor = 3, j = 0;
                 for (var i = 0, len = x1.length; i < len; ++i) {
-                    if (_this.options.useIndianSeparators && i === 4) {
-                        factor = 2;
-                        j = 1;
-                    }
-                    if (i !== 0 && (j % factor) === 0) {
+                    if (i !== 0 && (i % 3) === 0) {
                         x3 = _this.options.separator + x3;
                     }
-                    j++;
                     x3 = x1[len - i - 1] + x3;
                 }
                 x1 = x3;
@@ -158,7 +151,6 @@ var CountUp = /** @class */ (function () {
             return;
         var bottomOfScroll = window.innerHeight + window.scrollY;
         var rect = self.el.getBoundingClientRect();
-        var topOfEl = rect.top + window.pageYOffset;
         var bottomOfEl = rect.top + rect.height + window.pageYOffset;
         if (bottomOfEl < bottomOfScroll && bottomOfEl > window.scrollY && self.paused) {
             // in view
@@ -167,9 +159,8 @@ var CountUp = /** @class */ (function () {
             if (self.options.scrollSpyOnce)
                 self.once = true;
         }
-        else if ((window.scrollY > bottomOfEl || topOfEl > bottomOfScroll) &&
-            !self.paused) {
-            // out of view
+        else if (window.scrollY > bottomOfEl && !self.paused) {
+            // scrolled past
             self.reset();
         }
     };
@@ -177,7 +168,7 @@ var CountUp = /** @class */ (function () {
      * Smart easing works by breaking the animation into 2 parts, the second part being the
      * smartEasingAmount and first part being the total amount minus the smartEasingAmount. It works
      * by disabling easing for the first part and enabling it on the second part. It is used if
-     * useEasing is true and the total animation amount exceeds the smartEasingThreshold.
+     * usingEasing is true and the total animation amount exceeds the smartEasingThreshold.
      */
     CountUp.prototype.determineDirectionAndSmartEasing = function () {
         var end = (this.finalEndVal) ? this.finalEndVal : this.endVal;
@@ -206,9 +197,7 @@ var CountUp = /** @class */ (function () {
         if (this.error) {
             return;
         }
-        if (callback) {
-            this.options.onCompleteCallback = callback;
-        }
+        this.callback = callback;
         if (this.duration > 0) {
             this.determineDirectionAndSmartEasing();
             this.paused = false;
@@ -258,14 +247,7 @@ var CountUp = /** @class */ (function () {
         this.rAF = requestAnimationFrame(this.count);
     };
     CountUp.prototype.printValue = function (val) {
-        var _a;
-        if (!this.el)
-            return;
         var result = this.formattingFn(val);
-        if ((_a = this.options.plugin) === null || _a === void 0 ? void 0 : _a.render) {
-            this.options.plugin.render(this.el, result);
-            return;
-        }
         if (this.el.tagName === 'INPUT') {
             var input = this.el;
             input.value = result;
