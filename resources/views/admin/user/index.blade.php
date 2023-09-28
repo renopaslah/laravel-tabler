@@ -6,6 +6,15 @@
 
 @section('content')
     <div class="container-fluid">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row row-deck row-cards">
             <div class="col">
                 <div class="card">
@@ -28,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user as $item)
+                                    @foreach ($users as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -60,59 +69,69 @@
         </div>
     </div>
 
-    <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tambah Pengguna</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
-                                    autocomplete="off">
-                                <label for="floating-input">Nama</label>
+    <form action="{{ route('admin.user.store') }}" method="POST">
+        @csrf
+        <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Pengguna</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input name="name" type="text" class="form-control" id="floating-input"
+                                        value="{{ old('name') }}" autocomplete="off">
+                                    <label for="floating-input">Nama</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
-                                    autocomplete="off">
-                                <label for="floating-input">Email</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input name="email" type="email" class="form-control" id="floating-input"
+                                        value="{{ old('email') }}" autocomplete="off">
+                                    <label for="floating-input">Email</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
-                                    autocomplete="off">
-                                <label for="floating-input">Password</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input name="password" type="password" class="form-control" id="floating-input"
+                                        value="" autocomplete="off">
+                                    <label for="floating-input">Password</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floating-input" value="name@example.com"
-                                    autocomplete="off">
-                                <label for="floating-input">Password Confirmation</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input name="password_confirmation" type="password" class="form-control"
+                                        id="floating-input" value="" autocomplete="off">
+                                    <label for="floating-input">Password Confirmation</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="" class="mb-1">Role</label>
-                                <select class="form-select" name="" id="sRole">
-                                    <option value=""></option>
-                                </select>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="" class="mb-1">Role</label>
+                                    <select class="form-select" name="role" id="sRole">
+                                        <option value=""></option>
+                                        @foreach ($roles as $item)
+                                            @if ($item->name == old('role'))
+                                                <option selected value="{{ $item->name }}">{{ $item->name }}</option>
+                                            @else
+                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">Simpan</button>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Simpan</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 @endsection
 
 @push('scripts')
@@ -125,8 +144,9 @@
             $('.table-responsive').removeClass('d-none');
 
             $('#sRole').select2({
+                placeholder: 'Pilih Role',
                 dropdownParent: $("#modal-report"),
-                width:'100%',
+                width: '100%',
             });
         });
     </script>

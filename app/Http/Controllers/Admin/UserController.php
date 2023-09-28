@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Http\Requests\UserPostRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public $dataUser;
+    public $repo;
 
     public function __construct()
     {
-        $this->dataUser = new UserRepository();
+        $this->repo = new UserRepository();
     }
 
     /**
@@ -25,9 +24,12 @@ class UserController extends Controller
     public function index()
     {
         $successMessage = session('success');
-        $user = $this->dataUser->get();
+        $user = $this->repo->get();
 
-        return view('admin.user.index', compact('user'));
+        return view('admin.user.index', [
+            'users' => $this->repo->get(),
+            'roles' => $this->repo->getRole(),
+        ]);
     }
 
     /**
@@ -46,9 +48,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserPostRequest $request)
     {
-        //
+        $role = $this->repo->store($request);
+        return redirect(route('admin.user.index'));
     }
 
     /**

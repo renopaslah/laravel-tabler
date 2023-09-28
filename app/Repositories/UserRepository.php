@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserRepository
 {
@@ -10,25 +13,30 @@ class UserRepository
         return User::with('roles')->get();
     }
 
-    // public function getById($id){
-    //     return Role::find($id);
-    // }
+    public function getRole(){
+        return Role::where('name', '!=', 'super admin')->get();
+    }
 
-    // public function save($data){
-    //     Role::create(['name' => $data->post('name')]);
-    //     session()->flash('success', 'Data berhasil ditambahkan.');
-    // }
+    public function find(){
+    }
 
-    // public function update($data, $id){
-    //     $role = Role::find($id);
-    //     $role->name = $data->post('name');
-    //     $role->save();
+    public function store($data){
+        return DB::transaction(function () use ($data) {
+            //insert user
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->password = Hash::make($data->password);
+            $user->save();
 
-    //     session()->flash('success', 'Data berhasil diperbaharui.');
-    // }
+            //update role
+            $user->assignRole($data->role);
+        });
+    }
 
-    // public function delete($id){
-    //     Role::destroy($id);
-    //     session()->flash('success', 'Data berhasil dihapus.');
-    // }
+    public function update(){
+    }
+
+    public function delete(){
+    }
 }

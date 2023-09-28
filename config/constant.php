@@ -9,4 +9,8 @@ return [
     'website' => 'https://www.google.com',
     'title' => 'Title',
     'description' => 'Description',
+
+    'role' => [
+        'super admin',
+    ],
 ];

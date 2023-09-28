@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRolePostRequest extends FormRequest
+class UserPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,13 +16,6 @@ class UserRolePostRequest extends FormRequest
         return true;
     }
 
-    public function prepareForValidation()
-    {
-        $this->merge([
-            'user_id' => request('user')
-        ]);
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -31,8 +24,10 @@ class UserRolePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:App\Models\User,id',
-            'role' => 'required|exists:Spatie\Permission\Models\Role,id',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:App\Models\User,email',
+            'password' => 'required|confirmed|min:8',
+            'role' => 'required|exists:Spatie\Permission\Models\Role,name',
         ];
     }
 }
