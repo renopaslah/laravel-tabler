@@ -46,8 +46,14 @@
                                                 <a href="{{ route('admin.user.role.create', ['user' => $item->id]) }}"
                                                     class="btn btn-sm btn-success mb-1">Peran</a>
                                                 <a href="#" class="btn btn-sm btn-warning mb-1">Tangguhkan</a>
-                                                <button type="button" class="btn btn-sm btn-danger delete-btn mb-1"
-                                                    data-id="{{ $item->id }}">Hapus</button>
+                                                        <form
+                                                            action="{{ route('admin.user.destroy', ['user' => $item->id]) }}"
+                                                            method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                            @csrf
+                                                            @method('DELETE')
+        
+                                                            <button type="submit" class="btn btn-sm btn-danger delete-btn mb-1">Hapus</button>
+                                                        </form>
                                             </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ Str::mask($item->email, '*', -16, 6) }}</td>

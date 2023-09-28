@@ -37,6 +37,9 @@ class UserRepository
     public function update(){
     }
 
-    public function delete(){
+    public function destroy($id){
+        $user = User::findOrFail($id);
+        $user->syncRoles([]);
+        $user->delete();
     }
 }

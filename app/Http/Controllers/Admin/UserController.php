@@ -96,6 +96,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = $this->repo->destroy(request('user'));
+        return redirect(route('admin.user.index'));
     }
 }
