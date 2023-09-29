@@ -41,19 +41,30 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary mb-1">Ubah</a>
-                                                <a href="#" class="btn btn-sm btn-info mb-1">Reset Password</a>
-                                                <a href="{{ route('admin.user.role.create', ['user' => $item->id]) }}"
-                                                    class="btn btn-sm btn-success mb-1">Peran</a>
-                                                <a href="#" class="btn btn-sm btn-warning mb-1">Tangguhkan</a>
-                                                        <form
-                                                            action="{{ route('admin.user.destroy', ['user' => $item->id]) }}"
-                                                            method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                                            @csrf
-                                                            @method('DELETE')
-        
-                                                            <button type="submit" class="btn btn-sm btn-danger delete-btn mb-1">Hapus</button>
-                                                        </form>
+                                                @if ($item->status)
+                                                    <a href="#" class="btn btn-sm btn-primary mb-1">Ubah</a>
+                                                    <a href="#"
+                                                        data-href="{{ route('admin.user.reset-password', ['user' => $item->id]) }}"
+                                                        class="btn btn-sm btn-info mb-1 bReset">Reset Password</a>
+                                                    <a href="{{ route('admin.user.role.create', ['user' => $item->id]) }}"
+                                                        class="btn btn-sm btn-success mb-1">Peran</a>
+                                                    <a href="#"
+                                                        data-href="{{ route('admin.user.set-status', ['user' => $item->id]) }}?status=0"
+                                                        class="btn btn-sm btn-warning mb-1 bEnabledDisable">Tangguhkan</a>
+                                                    <form action="{{ route('admin.user.destroy', ['user' => $item->id]) }}"
+                                                        method="POST"
+                                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger delete-btn mb-1">Hapus</button>
+                                                    </form>
+                                                @else
+                                                    <a href="#"
+                                                        data-href="{{ route('admin.user.set-status', ['user' => $item->id]) }}?status=1"
+                                                        class="btn btn-sm btn-success mb-1 bEnabledDisable">Aktifkan</a>
+                                                @endif
                                             </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ Str::mask($item->email, '*', -16, 6) }}</td>
@@ -63,7 +74,7 @@
                                                         class="badge badge-outline text-blue mb-1">{{ $role->name }}</span>
                                                 @endforeach
                                             </td>
-                                            <td>-</td>
+                                            <td>{{ $item->status_str }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -148,6 +159,18 @@
         $(document).ready(function() {
             $('#myTable').DataTable();
             $('.table-responsive').removeClass('d-none');
+
+            $('.bReset').on('click', function() {
+                if (confirm('Apakah Anda yakin akan reset password user ini?') == true) {
+                    window.location.href = $(this).data('href');
+                }
+            })
+
+            $('.bEnabledDisable').on('click', function() {
+                if (confirm('Apakah Anda yakin akan mengubah status user ini?') == true) {
+                    window.location.href = $(this).data('href');
+                }
+            })
 
             $('#sRole').select2({
                 placeholder: 'Pilih Role',
