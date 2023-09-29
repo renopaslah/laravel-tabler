@@ -32,7 +32,12 @@ class UserRepository
         return Role::where('name', '!=', 'super admin')->get();
     }
 
-    public function find(){
+    public function find($userId){
+        $data = User::findOrFail($userId);
+        
+        return (object) [
+            'name' => $data->name,
+        ];
     }
 
     public function store($data){

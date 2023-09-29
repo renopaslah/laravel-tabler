@@ -42,7 +42,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 @if ($item->status)
-                                                    <a href="#" class="btn btn-sm btn-primary mb-1">Ubah</a>
+                                                    <a href="{{ route('admin.user.edit', ['user' => $item->id]) }}"
+                                                        class="btn btn-sm btn-primary mb-1">Ubah</a>
                                                     <a href="#"
                                                         data-href="{{ route('admin.user.reset-password', ['user' => $item->id]) }}"
                                                         class="btn btn-sm btn-info mb-1 bReset">Reset Password</a>
@@ -99,29 +100,29 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input name="name" type="text" class="form-control" id="floating-input"
-                                        value="{{ old('name') }}" autocomplete="off">
+                                    <input name="name" type="text" class="form-control" value="{{ old('name') }}"
+                                        autocomplete="off">
                                     <label for="floating-input">Nama</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input name="email" type="email" class="form-control" id="floating-input"
-                                        value="{{ old('email') }}" autocomplete="off">
+                                    <input name="email" type="email" class="form-control" value="{{ old('email') }}"
+                                        autocomplete="off">
                                     <label for="floating-input">Email</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input name="password" type="password" class="form-control" id="floating-input"
-                                        value="" autocomplete="off">
+                                    <input name="password" type="password" class="form-control" value=""
+                                        autocomplete="off">
                                     <label for="floating-input">Password</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input name="password_confirmation" type="password" class="form-control"
-                                        id="floating-input" value="" autocomplete="off">
+                                    <input name="password_confirmation" type="password" class="form-control" value=""
+                                        autocomplete="off">
                                     <label for="floating-input">Password Confirmation</label>
                                 </div>
                             </div>
@@ -149,6 +150,48 @@
             </div>
         </div>
     </form>
+
+    @if (Route::currentRouteName() === 'admin.user.edit')
+        <form action="{{ route('admin.user.update', ['user' => request('user')]) }}" method="POST">
+            @method('PUT')
+            @csrf
+            <div class="modal modal-blur fade" id="modal-edit" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Pengguna</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input name="name" type="text" class="form-control"
+                                            value="@if ($user) {{ $user->name }} @endif"
+                                            autocomplete="off">
+                                        <label for="floating-input">Nama</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    @endif
 @endsection
 
 @push('scripts')
@@ -157,6 +200,13 @@
 
     <script>
         $(document).ready(function() {
+
+            // userId = {{ request('user') }};
+            
+            // if (userId) {
+            //     $('#modal-edit').modal('show');
+            // }
+
             $('#myTable').DataTable();
             $('.table-responsive').removeClass('d-none');
 

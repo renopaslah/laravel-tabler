@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPostRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
@@ -73,7 +74,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->repo->get();
+
+        return view('admin.user.index', [
+            'user' => $this->repo->find(request('user')),
+            'users' => $this->repo->get(),
+            'roles' => $this->repo->getRole(),
+        ]);
     }
 
     /**
@@ -83,9 +90,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $this->repo->update((object) request()->all());
+        return redirect(route('admin.user.index'));
     }
 
     /**
