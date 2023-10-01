@@ -2,6 +2,7 @@
 
 return [
     'versi' => 'Versi 1.0',
+    'year' => '2021',
     'company' => 'Company',
     'codename' => 'Codename',
     'copyright' => date('Y'),

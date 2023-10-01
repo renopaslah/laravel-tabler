@@ -201,9 +201,9 @@
                         <a class="dropdown-item {{ (Route::currentRouteName() === 'admin.role.index' || Route::currentRouteName() === 'admin.role.edit') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
                             Peran
                         </a>
-                        <a class="dropdown-item" href="#">
+                        {{-- <a class="dropdown-item" href="#">
                             Izin
-                        </a>
+                        </a> --}}
                     </div>
                 </li>
             </ul>
