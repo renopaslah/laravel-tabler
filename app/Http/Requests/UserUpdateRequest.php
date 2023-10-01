@@ -32,6 +32,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'user_id' => 'required|exists:App\Models\User,id',
+            'email' => 'required|unique:App\Models\User,email,' . $this->user_id,
+            'password' => 'nullable|confirmed|min:8',
             'name' => 'required|string|max:100',
         ];
     }

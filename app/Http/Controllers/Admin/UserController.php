@@ -76,10 +76,8 @@ class UserController extends Controller
     {
         $user = $this->repo->get();
 
-        return view('admin.user.index', [
+        return view('admin.user.edit', [
             'user' => $this->repo->find(request('user')),
-            'users' => $this->repo->get(),
-            'roles' => $this->repo->getRole(),
         ]);
     }
 
@@ -92,7 +90,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $this->repo->update((object) request()->all());
+        $this->repo->update((object) request()->all(), request('user'));
         return redirect(route('admin.user.index'));
     }
 

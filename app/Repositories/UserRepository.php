@@ -37,6 +37,7 @@ class UserRepository
         
         return (object) [
             'name' => $data->name,
+            'email' => $data->email,
         ];
     }
 
@@ -54,7 +55,14 @@ class UserRepository
         });
     }
 
-    public function update(){
+    public function update($data, $id){
+        $user = User::findOrFail($id);
+        $user->name = $data->name;
+        $user->email = $data->email;
+        if($data->password){
+            $user->password = Hash::make($data->password);
+        }
+        $user->save();
     }
 
     public function destroy($id){
