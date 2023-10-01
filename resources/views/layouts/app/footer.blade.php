@@ -34,11 +34,11 @@
                         <a href="#" class="link-secondary">{{ config('constant.company') }}</a>.
                         All rights reserved
                     </li>
-                    {{-- <li class="list-inline-item">
-                        <a href="./changelog.html" class="link-secondary" rel="noopener">
-                            v1.0.0-beta5
+                    <li class="list-inline-item">
+                        <a href="#" class="link-secondary" rel="noopener">
+                            {{ config('constant.version') }}
                         </a>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
         </div>

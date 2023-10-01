@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'versi' => 'Versi 1.0',
+    'version' => 'v1.0.0',
     'year' => '2021',
     'company' => 'Company',
     'codename' => 'Codename',
