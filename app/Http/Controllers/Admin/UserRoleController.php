@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class UserRoleController extends Controller
 {
-    public $userRole;
+    public $repo;
 
     public function __construct()
     {
-        $this->userRole = new UserRoleRepository();
+        $this->repo = new UserRoleRepository();
     }
 
     /**
@@ -33,10 +33,10 @@ class UserRoleController extends Controller
      */
     public function create()
     {
-        $roles = $this->userRole->getRole(request('user'));
-        $user = $this->userRole->getUser(request('user'));
-
-        return view('admin.user_role.create', compact('roles', 'user'));
+        return view('admin.user_role.create', [
+            'roles' => $this->repo->getRole(request('user')),
+            'user' => $this->repo->getUser(request('user')),
+        ]);
     }
 
     /**
@@ -47,7 +47,7 @@ class UserRoleController extends Controller
      */
     public function store(UserRolePostRequest $request)
     {
-        $role = $this->userRole->save($request);
+        $this->repo->save($request);
         return redirect(route('admin.user.index'));
     }
 

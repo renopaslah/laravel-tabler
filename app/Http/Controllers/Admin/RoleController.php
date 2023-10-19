@@ -26,7 +26,6 @@ class RoleController extends Controller
     {
         return view('admin.role.index', [
             'role' => $this->repo->get(),
-            'successMessage' => session('success'),
         ]);
     }
 
@@ -48,7 +47,7 @@ class RoleController extends Controller
      */
     public function store(RolePostRequest $request)
     {
-        $role = $this->role->save($request);
+        $this->repo->save($request);
         return redirect(route('admin.role.index'));
     }
 
@@ -71,8 +70,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = $this->role->getById($id);
-        return view('admin.role.edit', compact('role'));
+        return view('admin.role.edit', [
+            'role' => $this->repo->getById($id),
+        ]);
     }
 
     /**
@@ -84,7 +84,7 @@ class RoleController extends Controller
      */
     public function update(RoleUpdateRequest $request, $id)
     {
-        $role = $this->role->update($request, $id);
+        $this->repo->update($request, $id);
         return redirect(route('admin.role.index'));
     }
 
@@ -96,6 +96,6 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = $this->role->delete($id);
+        $role = $this->repo->delete($id);
     }
 }

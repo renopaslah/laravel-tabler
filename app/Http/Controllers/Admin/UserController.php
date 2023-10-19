@@ -24,7 +24,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        $successMessage = session('success');
         $user = $this->repo->get();
 
         return view('admin.user.index', [
@@ -51,7 +50,7 @@ class UserController extends Controller
      */
     public function store(UserPostRequest $request)
     {
-        $role = $this->repo->store($request);
+        $this->repo->store($request);
         return redirect(route('admin.user.index'));
     }
 
@@ -74,8 +73,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->repo->get();
-
         return view('admin.user.edit', [
             'user' => $this->repo->find(request('user')),
         ]);
@@ -102,7 +99,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $role = $this->repo->destroy(request('user'));
+        $this->repo->destroy(request('user'));
         return redirect(route('admin.user.index'));
     }
 }
