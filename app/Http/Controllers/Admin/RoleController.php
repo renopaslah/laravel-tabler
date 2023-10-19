@@ -11,11 +11,11 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    public $role;
+    public $repo;
 
     public function __construct()
     {
-        $this->role = new RoleRepository();
+        $this->repo = new RoleRepository();
     }
     /**
      * Display a listing of the resource.
@@ -24,10 +24,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $successMessage = session('success');
-        $role = $this->role->get();
-
-        return view('admin.role.index', compact('role', 'successMessage'));
+        return view('admin.role.index', [
+            'role' => $this->repo->get(),
+            'successMessage' => session('success'),
+        ]);
     }
 
     /**
