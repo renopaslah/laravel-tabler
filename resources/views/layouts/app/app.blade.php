@@ -17,11 +17,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSS files -->
-    <link href="{{ asset('/dist/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('/dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('/dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('/dist/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('/dist/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
 
@@ -39,7 +39,7 @@
     </style>
   </head>
   <body >
-    <script src="{{ asset('/dist/js/demo-theme.min.js?1684106062') }}"></script>
+    <script src="{{ asset('/js/demo-theme.min.js?1684106062') }}"></script>
     <div class="page">
         @include('layouts.app.sidebar')
         @include('layouts.app.header')
@@ -52,10 +52,10 @@
         </div>
     </div>
     <!-- Libs JS -->
-    <script src="{{ asset('/dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('/libs/apexcharts/apexcharts.min.js') }}"></script>
     <!-- Tabler Core -->
-    <script src="{{ asset('/dist/js/tabler.min.js') }}"></script>
-    <script src="{{ asset('/dist/js/demo.min.js') }}"></script>
+    <script src="{{ asset('/js/tabler.min.js') }}"></script>
+    <script src="{{ asset('/js/demo.min.js') }}"></script>
     @stack('scripts')
   </body>
 </html>
